@@ -583,7 +583,6 @@ button.tag-pill:hover {
 
   .blog-sidebar {
     position: static;
-    order: -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
