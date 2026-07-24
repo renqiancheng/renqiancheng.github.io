@@ -1,16 +1,19 @@
 /* 卡片式博客样式 —— 参考截图布局 */
 
 :root {
-  --bg: #f4f4f5;
+  /* Claude / Anthropic 暖色系 */
+  --bg: #faf9f5;
   --surface: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #5c5c5c;
-  --text-muted: #8a8a8a;
-  --border: #ebebeb;
-  --tag-bg: #f0ebe3;
-  --tag-text: #5c5346;
-  --tag-active-bg: #e4d9c8;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --text: #141413;
+  --text-secondary: #3d3d3a;
+  --text-muted: #87867f;
+  --border: #e8e6dc;
+  --tag-bg: #e3dacc;
+  --tag-text: #5e5d59;
+  --tag-active-bg: #d4c4a8;
+  --accent: #d97757;
+  --accent-deep: #c6613f;
+  --shadow: 0 1px 3px rgba(20, 20, 19, 0.05), 0 4px 14px rgba(20, 20, 19, 0.04);
   --radius: 14px;
   --radius-sm: 999px;
   --container: 1080px;
@@ -179,7 +182,7 @@ a:hover {
 }
 
 .post-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(20, 20, 19, 0.07), 0 8px 20px rgba(20, 20, 19, 0.05);
 }
 
 .post-card-title {
@@ -255,9 +258,9 @@ button.tag-pill:hover {
 }
 
 .tag-pill.is-active {
-  background: var(--tag-active-bg);
+  background: var(--accent);
   font-weight: 600;
-  color: var(--text);
+  color: #faf9f5;
 }
 
 .tag-count {
@@ -304,7 +307,7 @@ button.tag-pill:hover {
 }
 
 .sort-select:focus {
-  border-color: #c5c5c5;
+  border-color: var(--accent);
 }
 
 .sidebar-tags {
@@ -386,7 +389,7 @@ button.tag-pill:hover {
 .page-content blockquote {
   margin: 0 0 1.15rem;
   padding: 0.15rem 0 0.15rem 1rem;
-  border-left: 3px solid var(--tag-bg);
+  border-left: 3px solid var(--accent);
   color: var(--text-secondary);
 }
 
@@ -434,14 +437,15 @@ button.tag-pill:hover {
 
 .post-content a,
 .page-content a {
-  color: #2a6bb5;
+  color: var(--accent-deep);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .post-content a:hover,
 .page-content a:hover {
-  opacity: 0.8;
+  color: var(--accent);
+  opacity: 1;
 }
 
 /* —— 标签页 —— */
@@ -522,7 +526,7 @@ button.tag-pill:hover {
 }
 
 .search-input:focus {
-  border-color: #c5c5c5;
+  border-color: var(--accent);
   background: var(--surface);
 }
 
