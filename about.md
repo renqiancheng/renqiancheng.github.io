@@ -8,4 +8,4 @@ permalink: /about.html
 
 这里记录一些技术、生活与思考。风格尽量简单——少装饰，多内容。
 
-如果你想联系我，可以通过 GitHub 找到我：[renqiancheng](https://github.com/renqiancheng)。
+如果你想联系我，欢迎通过 GitHub 与我交流。
