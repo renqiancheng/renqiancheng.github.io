@@ -9,7 +9,7 @@ permalink: /tags.html
   {% for tag in sorted_tags %}
     {% assign tag_name = tag[0] %}
     {% assign tag_posts = tag[1] %}
-    <a href="#{{ tag_name }}">{{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span></a>
+    <a class="tag-pill" href="#{{ tag_name }}">{{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span></a>
   {% endfor %}
 </div>
 

@@ -2,25 +2,71 @@
 layout: default
 ---
 
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li class="post-list-item">
-      <h2 class="post-list-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <p class="post-list-excerpt">
-        {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
-      </p>
-      <p class="post-list-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%-m月%-d日" }}</time>
-        {% if post.tags.size > 0 %}
-          <span class="post-tags">
-            {% for tag in post.tags %}
-              <a href="{{ '/tags.html#' | append: tag | relative_url }}">{{ tag }}</a>
-            {% endfor %}
-          </span>
-        {% endif %}
-      </p>
-    </li>
-  {% endfor %}
-</ul>
+<div class="blog-layout" id="blog-layout">
+  <div class="blog-main">
+    <h1 class="blog-heading">博客文章</h1>
+
+    <ul class="post-list" id="post-list">
+      {% for post in site.posts %}
+        <li
+          class="post-card"
+          data-date="{{ post.date | date_to_xmlschema }}"
+          data-tags="{{ post.tags | join: ',' }}"
+        >
+          <h2 class="post-card-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          <p class="post-card-excerpt">
+            {{ post.excerpt | strip_html | strip_newlines | truncate: 220 }}
+          </p>
+          <div class="post-card-footer">
+            <time class="post-card-date" datetime="{{ post.date | date_to_xmlschema }}">
+              <svg class="icon-calendar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <path d="M16 2v4M8 2v4M3 10h18"></path>
+              </svg>
+              {{ post.date | date: "%Y年%-m月%-d日" }}
+            </time>
+            {% if post.tags.size > 0 %}
+              <div class="post-card-tags">
+                {% for tag in post.tags %}
+                  <button type="button" class="tag-pill" data-filter-tag="{{ tag }}">{{ tag }}</button>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p class="filter-empty" id="filter-empty" hidden>没有符合条件的文章</p>
+  </div>
+
+  <aside class="blog-sidebar">
+    <section class="sidebar-card">
+      <h2 class="sidebar-title">排序方式</h2>
+      <label class="sr-only" for="sort-select">排序方式</label>
+      <select id="sort-select" class="sort-select">
+        <option value="newest">最新发布</option>
+        <option value="oldest">最早发布</option>
+      </select>
+    </section>
+
+    <section class="sidebar-card">
+      <h2 class="sidebar-title">按标签筛选</h2>
+      <div class="sidebar-tags" id="sidebar-tags">
+        <button type="button" class="tag-pill is-active" data-filter-tag="">全部</button>
+        {% assign sorted_tags = site.tags | sort %}
+        {% for tag in sorted_tags %}
+          {% assign tag_name = tag[0] %}
+          {% assign tag_posts = tag[1] %}
+          <button type="button" class="tag-pill" data-filter-tag="{{ tag_name }}">
+            {{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span>
+          </button>
+        {% endfor %}
+      </div>
+    </section>
+  </aside>
+</div>
+
+<script src="{{ '/assets/js/blog-filter.js' | relative_url }}"></script>
