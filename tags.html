@@ -1,0 +1,31 @@
+---
+layout: page
+title: 标签
+permalink: /tags.html
+---
+
+<div class="tag-cloud">
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    {% assign tag_name = tag[0] %}
+    {% assign tag_posts = tag[1] %}
+    <a href="#{{ tag_name }}">{{ tag_name }} <span class="tag-count">({{ tag_posts.size }})</span></a>
+  {% endfor %}
+</div>
+
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
+  {% assign tag_name = tag[0] %}
+  {% assign tag_posts = tag[1] %}
+  <section class="tag-group" id="{{ tag_name }}">
+    <h2>{{ tag_name }}</h2>
+    <ul>
+      {% for post in tag_posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%-m月%-d日" }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endfor %}

@@ -1,0 +1,48 @@
+title: 余晖
+description: 一个极简的个人博客
+author: renqiancheng
+email: ""
+url: "https://blog.yuchui.com"
+baseurl: ""
+
+# 构建设置
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# 时区与语言
+timezone: Asia/Shanghai
+lang: zh-CN
+
+# 插件（GitHub Pages 白名单）
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# 摘要分隔符：文章中用 <!--more--> 截断；否则自动取前段
+excerpt_separator: "<!--more-->"
+
+# 排除文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .gitignore
+  - .git
+
+# 默认 front matter
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
