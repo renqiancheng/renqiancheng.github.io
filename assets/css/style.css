@@ -577,8 +577,13 @@ button.tag-pill:hover {
 
 /* —— 响应式 —— */
 @media (max-width: 900px) {
+  .site-main {
+    padding-top: 1rem;
+  }
+
   .blog-layout {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .blog-sidebar {
